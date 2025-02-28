@@ -1,0 +1,14 @@
+C:\Users\A1\Desktop\proga\Burrows_Wheeler_Transform\bin\Debug\net8.0\Burrows_Wheeler_Transform.exe
+C:\Users\A1\Desktop\proga\Burrows_Wheeler_Transform\bin\Debug\net8.0\Burrows_Wheeler_Transform.deps.json
+C:\Users\A1\Desktop\proga\Burrows_Wheeler_Transform\bin\Debug\net8.0\Burrows_Wheeler_Transform.runtimeconfig.json
+C:\Users\A1\Desktop\proga\Burrows_Wheeler_Transform\bin\Debug\net8.0\Burrows_Wheeler_Transform.dll
+C:\Users\A1\Desktop\proga\Burrows_Wheeler_Transform\bin\Debug\net8.0\Burrows_Wheeler_Transform.pdb
+C:\Users\A1\Desktop\proga\Burrows_Wheeler_Transform\obj\Debug\net8.0\Burrows_Wheeler_Transform.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\A1\Desktop\proga\Burrows_Wheeler_Transform\obj\Debug\net8.0\Burrows_Wheeler_Transform.AssemblyInfoInputs.cache
+C:\Users\A1\Desktop\proga\Burrows_Wheeler_Transform\obj\Debug\net8.0\Burrows_Wheeler_Transform.AssemblyInfo.cs
+C:\Users\A1\Desktop\proga\Burrows_Wheeler_Transform\obj\Debug\net8.0\Burrows_Wheeler_Transform.csproj.CoreCompileInputs.cache
+C:\Users\A1\Desktop\proga\Burrows_Wheeler_Transform\obj\Debug\net8.0\Burrows_Wheeler_Transform.dll
+C:\Users\A1\Desktop\proga\Burrows_Wheeler_Transform\obj\Debug\net8.0\refint\Burrows_Wheeler_Transform.dll
+C:\Users\A1\Desktop\proga\Burrows_Wheeler_Transform\obj\Debug\net8.0\Burrows_Wheeler_Transform.pdb
+C:\Users\A1\Desktop\proga\Burrows_Wheeler_Transform\obj\Debug\net8.0\Burrows_Wheeler_Transform.genruntimeconfig.cache
+C:\Users\A1\Desktop\proga\Burrows_Wheeler_Transform\obj\Debug\net8.0\ref\Burrows_Wheeler_Transform.dll
