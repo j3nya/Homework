@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LZW", "LZW\LZW.csproj", "{57ACAD15-37FD-40A7-B791-C5E9A4986B36}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LZWTests", "LZWTests\LZWTests.csproj", "{58B388B7-2A56-4E03-A18E-252A785A2EE3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{57ACAD15-37FD-40A7-B791-C5E9A4986B36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57ACAD15-37FD-40A7-B791-C5E9A4986B36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57ACAD15-37FD-40A7-B791-C5E9A4986B36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57ACAD15-37FD-40A7-B791-C5E9A4986B36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58B388B7-2A56-4E03-A18E-252A785A2EE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58B388B7-2A56-4E03-A18E-252A785A2EE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58B388B7-2A56-4E03-A18E-252A785A2EE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58B388B7-2A56-4E03-A18E-252A785A2EE3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

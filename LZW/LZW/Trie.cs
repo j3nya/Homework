@@ -5,15 +5,20 @@ namespace Trie;
 /// </summary>
 public class Trie
 {
-    private int size;
     private List<Vertex> vertices = new () { new Vertex() };
 
-    /// <summary>
-    /// Adds a string to trie.
-    /// </summary>
-    /// <param name="element"> String to add to the trie. </param>
-    /// <returns> Value indicating whether such a string has already been added. </returns>
-    public bool Add(string? element)
+/// <summary>
+/// Gets or sets number of the word in trie.
+/// </summary>
+    public int Size { get; set; }
+
+/// <summary>
+/// Adds a string to trie with string key.
+/// </summary>
+/// <param name="element">A string to add.</param>
+/// <param name="key">Key associated with the string.</param>
+/// <returns>Value indicates whether the word has been added.</returns>
+    public bool Add(string? element, string key)
     {
         if (this.CheckInputString(element))
         {
@@ -35,7 +40,6 @@ public class Trie
             if (nextVer == null)
             {
                 Vertex newVer = new ();
-                this.size++;
                 this.vertices.Add(newVer);
                 this.vertices[currVer].SetNext(charItem, newVer);
                 nextVer = newVer;
@@ -66,7 +70,9 @@ public class Trie
             return false;
         }
 
+        this.Size++;
         this.vertices[currVer].IsTerminal = true;
+        this.vertices[currVer].WordsKey = key;
         return true;
     }
 
@@ -156,6 +162,35 @@ public class Trie
         return this.vertices[currVer].TimesVisited;
     }
 
+/// <summary>
+/// Finds the key of a word.
+/// </summary>
+/// <param name="element">The word whose key needs to be found.</param>
+/// <returns>Word key.</returns>
+    public string? GetWordsKey(string element)
+    {
+        int currVer = 0;
+        for (int i = 0; i < element?.Length; i++)
+        {
+            if (this.CheckInputStringsChar(element, i))
+            {
+                Console.WriteLine("Invalid Input String.");
+                return "-1";
+            }
+
+            int charItem = element[i];
+            Vertex? nextVer = this.vertices[currVer].GetNext(charItem);
+            if (nextVer == null)
+            {
+                return "0";
+            }
+
+            currVer = this.vertices.IndexOf(nextVer);
+        }
+
+        return this.vertices[currVer].WordsKey;
+    }
+
     /// <summary>
     /// Checks for cases too long string and empty string.
     /// </summary>
@@ -184,7 +219,7 @@ public class Trie
     /// </summary>
     protected class Vertex
     {
-        private Vertex?[] next = new Vertex[255];
+        private Vertex?[] next = new Vertex[256];
 
         /// <summary>
         /// Gets or sets a value indicating whether the vertex is the end of the word.
@@ -195,6 +230,11 @@ public class Trie
         /// Gets or sets a value showing the number of visits to the vertex.
         /// </summary>
         public int TimesVisited { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value that shows key of the word with the end at the terminal vertex.
+        /// </summary>
+        public string? WordsKey { get; set; }
 
         /// <summary>
         /// Gets the next vertex for the given character.
