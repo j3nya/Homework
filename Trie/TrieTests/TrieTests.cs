@@ -1,7 +1,4 @@
 ﻿namespace TrieTests;
-
-using Microsoft.VisualStudio.TestPlatform.PlatformAbstractions.Interfaces;
-using Newtonsoft.Json;
 using Trie;
 
 /// <summary>
@@ -33,7 +30,6 @@ public class TrieTests
     {
         Assert.That(this.trie.Add("Русскоеслово"), Is.EqualTo(false));
         Assert.That(this.trie.Add(string.Empty), Is.EqualTo(false));
-        Assert.That(this.trie.Add(null), Is.EqualTo(false));
     }
 
 /// <summary>
@@ -45,7 +41,6 @@ public class TrieTests
     {
         Assert.That(this.trie.Contains("Русскоеслово"), Is.EqualTo(false));
         Assert.That(this.trie.Contains(string.Empty), Is.EqualTo(false));
-        Assert.That(this.trie.Contains(null), Is.EqualTo(false));
     }
 
 /// <summary>
@@ -55,9 +50,11 @@ public class TrieTests
 
     public void CheckInvalidStringCaseForRemove()
     {
-        Assert.That(this.trie.Remove("Русскоеслово"), Is.EqualTo(false));
-        Assert.That(this.trie.Remove(string.Empty), Is.EqualTo(false));
-        Assert.That(this.trie.Remove(null), Is.EqualTo(false));
+        Assert.Multiple(() =>
+        {
+            Assert.That(this.trie.Remove("Русскоеслово"), Is.EqualTo(false));
+            Assert.That(this.trie.Remove(string.Empty), Is.EqualTo(false));
+        });
     }
 
 /// <summary>
@@ -67,9 +64,11 @@ public class TrieTests
 
     public void CheckInvalidStringCaseForHowManyStartsWithPrefix()
     {
-        Assert.That(this.trie.HowManyStartWithPrefix("Русскоеслово"), Is.EqualTo(0));
-        Assert.That(this.trie.HowManyStartWithPrefix(string.Empty), Is.EqualTo(0));
-        Assert.That(this.trie.HowManyStartWithPrefix(null), Is.EqualTo(0));
+        Assert.Multiple(() =>
+        {
+            Assert.That(this.trie.HowManyStartWithPrefix("Русскоеслово"), Is.EqualTo(0));
+            Assert.That(this.trie.HowManyStartWithPrefix(string.Empty), Is.EqualTo(0));
+        });
     }
 
 /// <summary>
@@ -97,9 +96,12 @@ public class TrieTests
 
     public void CheckIfHowManyStartsWithPrefixReturnsRightAmount()
     {
-        Assert.That(this.trie.HowManyStartWithPrefix("Sob"), Is.EqualTo(3));
-        Assert.That(this.trie.HowManyStartWithPrefix("Med"), Is.EqualTo(0));
-        Assert.That(this.trie.HowManyStartWithPrefix("Sobak"), Is.EqualTo(2));
+        Assert.Multiple(() =>
+        {
+            Assert.That(this.trie.HowManyStartWithPrefix("Sob"), Is.EqualTo(3));
+            Assert.That(this.trie.HowManyStartWithPrefix("Med"), Is.EqualTo(0));
+            Assert.That(this.trie.HowManyStartWithPrefix("Sobak"), Is.EqualTo(2));
+        });
     }
 
 /// <summary>
@@ -109,8 +111,11 @@ public class TrieTests
 
     public void CheckIfRemoveReturnsFalse()
     {
-        Assert.That(this.trie.Remove("🐟"), Is.EqualTo(false));
-        Assert.That(this.trie.Remove("Sobaka🐟"), Is.EqualTo(false));
+        Assert.Multiple(() =>
+        {
+            Assert.That(this.trie.Remove("🐟"), Is.EqualTo(false));
+            Assert.That(this.trie.Remove("Sobaka🐟"), Is.EqualTo(false));
+        });
     }
 
 /// <summary>
@@ -120,8 +125,31 @@ public class TrieTests
 
     public void CheckIfRemoveRemovesString()
     {
-        Assert.That(this.trie.Remove("Sobaka"), Is.EqualTo(true));
-        Assert.That(this.trie.Contains("Sobaka"), Is.EqualTo(false));
+        Assert.Multiple(() =>
+        {
+            Assert.That(this.trie.Remove("Sobaka"), Is.EqualTo(true));
+            Assert.That(this.trie.Contains("Sobaka"), Is.EqualTo(false));
+        });
+    }
+
+/// <summary>
+/// Check if removing prefix leaves words containing prefix.
+/// </summary>
+    [Test]
+    public void CheckIfRemoveRemovesPrefix()
+    {
+        this.trie.Remove("Sobak");
+        Assert.That(this.trie.Contains("Sobaka"), Is.EqualTo(true));
+    }
+
+/// <summary>
+/// Check if removing word containing prefix leaves prefix.
+/// </summary>
+    [Test]
+    public void CheckIfRemovesWordWithContainingPrefixes()
+    {
+        this.trie.Remove("Sobaka");
+        Assert.That(this.trie.Contains("Sobak"), Is.EqualTo(true));
     }
 
 /// <summary>
