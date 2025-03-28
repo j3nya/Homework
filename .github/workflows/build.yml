@@ -11,4 +11,7 @@ jobs:
         with:
           dotnet-version: '9.0'
       - name: Build
-        run: For /R %%I in (*.sln) do dotnet build %%I
+        run: |
+          find . -name "*.sln" | while read solution; do
+            dotnet build "$solution"
+          done
