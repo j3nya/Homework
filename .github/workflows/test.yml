@@ -10,4 +10,5 @@ jobs:
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '9.0'
-      - run: dotnet test
+      - name: Test
+        run: For /R %%I in (*.sln) do dotnet test %%I

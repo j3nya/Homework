@@ -10,4 +10,5 @@ jobs:
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '9.0'
-      - run: dotnet build
+      - name: Build
+        run: For /R %%I in (*.sln) do dotnet build %%I
