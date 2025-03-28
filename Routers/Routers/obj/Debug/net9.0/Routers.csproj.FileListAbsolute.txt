@@ -1,0 +1,15 @@
+/home/j3nya/Documents/Homework/Routers/Routers/bin/Debug/net9.0/Routers
+/home/j3nya/Documents/Homework/Routers/Routers/bin/Debug/net9.0/Routers.deps.json
+/home/j3nya/Documents/Homework/Routers/Routers/bin/Debug/net9.0/Routers.runtimeconfig.json
+/home/j3nya/Documents/Homework/Routers/Routers/bin/Debug/net9.0/Routers.dll
+/home/j3nya/Documents/Homework/Routers/Routers/bin/Debug/net9.0/Routers.pdb
+/home/j3nya/Documents/Homework/Routers/Routers/obj/Debug/net9.0/Routers.GeneratedMSBuildEditorConfig.editorconfig
+/home/j3nya/Documents/Homework/Routers/Routers/obj/Debug/net9.0/Routers.AssemblyInfoInputs.cache
+/home/j3nya/Documents/Homework/Routers/Routers/obj/Debug/net9.0/Routers.AssemblyInfo.cs
+/home/j3nya/Documents/Homework/Routers/Routers/obj/Debug/net9.0/Routers.csproj.CoreCompileInputs.cache
+/home/j3nya/Documents/Homework/Routers/Routers/obj/Debug/net9.0/Routers.sourcelink.json
+/home/j3nya/Documents/Homework/Routers/Routers/obj/Debug/net9.0/Routers.dll
+/home/j3nya/Documents/Homework/Routers/Routers/obj/Debug/net9.0/refint/Routers.dll
+/home/j3nya/Documents/Homework/Routers/Routers/obj/Debug/net9.0/Routers.pdb
+/home/j3nya/Documents/Homework/Routers/Routers/obj/Debug/net9.0/Routers.genruntimeconfig.cache
+/home/j3nya/Documents/Homework/Routers/Routers/obj/Debug/net9.0/ref/Routers.dll
