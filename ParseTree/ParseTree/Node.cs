@@ -1,3 +1,7 @@
+// <copyright file="Node.cs" company="Chernoshchokaya Evgenia">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
 namespace ParseTree;
 
 /// <summary>
@@ -29,15 +33,21 @@ public abstract class Node
     }
 
     /// <summary>
+    /// Counts an expression composed of a subtree with a top at this node or if the node is a number returns a number.
+    /// </summary>
+    /// <returns>Result of calculation or number.</returns>
+    public abstract float Evaluate();
+
+    /// <summary>
     /// Auxiliary method for method Print which bypasess the tree.
     /// </summary>
     /// <param name="root">Operator for recursive call.</param>
     /// <param name="stringToPrint">String to print.</param>
-    public static void PrintRecursively(Operator root, ref string stringToPrint)
+    private static void PrintRecursively(Operator root, ref string stringToPrint)
     {
         if (root.Left == null || root.Right == null)
         {
-            throw new Exception(); //trying to print meaningless expression.
+            throw new Operator.MeaninglessExpressionException("Operands are not there");
         }
 
         Node operand1 = root.Left;
@@ -66,10 +76,4 @@ public abstract class Node
 
         stringToPrint += ") "; // after every second operand add closing brace.
     }
-
-    /// <summary>
-    /// Counts an expression composed of a subtree with a top at this node or if the node is a number returns a number.
-    /// </summary>
-    /// <returns>Result of calculation or number.</returns>
-    public abstract float Evaluate();
 }

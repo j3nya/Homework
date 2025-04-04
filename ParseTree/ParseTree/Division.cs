@@ -1,3 +1,7 @@
+// <copyright file="Division.cs" company="Chernoshchokaya Evgenia">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
 namespace ParseTree;
 
 /// <summary>
@@ -11,7 +15,7 @@ public class Division : Operator
     public override char OperationChar { get; } = '/';
 
     /// <summary>
-    /// Counts an expression with two numbers.
+    /// Divides two numbers.
     /// </summary>
     /// <param name="a">First operand.</param>
     /// <param name="b">Second operand.</param>

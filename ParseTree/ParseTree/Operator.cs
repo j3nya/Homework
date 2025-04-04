@@ -1,3 +1,7 @@
+// <copyright file="Operator.cs" company="Chernoshchokaya Evgenia">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
 namespace ParseTree;
 
 /// <summary>
@@ -51,7 +55,7 @@ public abstract class Operator : Node
             }
         }
 
-        throw new Exception(); //incorrect operation char.
+        throw new IncorrectOperationCharException("Operation char is incorrect");
     }
 
     /// <summary>
@@ -70,9 +74,39 @@ public abstract class Operator : Node
     {
         if (this.Left == null || this.Right == null)
         {
-            throw new Exception(); //trying to evaluate empty expression.
+            throw new MeaninglessExpressionException("Operands are not there");
         }
 
         return this.Operate(this.Left.Evaluate(), this.Right.Evaluate());
+    }
+
+    /// <summary>
+    /// Throws if operation char is invalid.
+    /// </summary>
+    public class IncorrectOperationCharException : Exception
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="IncorrectOperationCharException"/> class.
+        /// </summary>
+        /// <param name="message">Message.</param>
+        public IncorrectOperationCharException(string message)
+            : base(message)
+            {
+            }
+    }
+
+    /// <summary>
+    /// Throws if program tries to compute operation without operands.
+    /// </summary>
+    public class MeaninglessExpressionException : Exception
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MeaninglessExpressionException"/> class.
+        /// </summary>
+        /// <param name="message">Message.</param>
+        public MeaninglessExpressionException(string message)
+            : base(message)
+            {
+            }
     }
 }

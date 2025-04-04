@@ -35,30 +35,44 @@ public class PrintTests
     {
         Operator bigTreeRoot = (Operator)bigTree.Root;
         Operator treeRoot = (Operator)tree.Root;
-        Operator bigTreeLeftSubtreeRoot = (Operator)bigTreeRoot.Left;
-        Operator bigTreeRightSubtreeRoot = (Operator)bigTreeRoot.Right;
-        Operator treeLeftSubtreeRoot = (Operator)treeRoot.Left;
-        Assert.Multiple (() =>
+        if (bigTreeRoot.Left != null && bigTreeRoot.Right != null && treeRoot.Left != null)
         {
-            Assert.That(Node.Print(bigTreeLeftSubtreeRoot), Is.EqualTo("( - 1 2 )"));
-            Assert.That(Node.Print(bigTreeRightSubtreeRoot), Is.EqualTo("( / ( + ( - 3 ( + 1 9 ) ) 4 ) 2 )"));
-            Assert.That(Node.Print(treeLeftSubtreeRoot), Is.EqualTo("( - 1 2 )"));
+            Operator bigTreeLeftSubtreeRoot = (Operator)bigTreeRoot.Left;
+            Operator bigTreeRightSubtreeRoot = (Operator)bigTreeRoot.Right;
+            Operator treeLeftSubtreeRoot = (Operator)treeRoot.Left;
+            Assert.Multiple (() =>
+            {
+                Assert.That(Node.Print(bigTreeLeftSubtreeRoot), Is.EqualTo("( - 1 2 )"));
+                Assert.That(Node.Print(bigTreeRightSubtreeRoot), Is.EqualTo("( / ( + ( - 3 ( + 1 9 ) ) 4 ) 2 )"));
+                Assert.That(Node.Print(treeLeftSubtreeRoot), Is.EqualTo("( - 1 2 )"));
 
-        });
+            });
+        }
+        else
+        {
+            throw new Exception(); //build tree problem.
+        }
 
     }
     [Test]
     public void CheckIfNumberPrintsCorrect()
     {
         Operator treeRoot = (Operator)tree.Root;
-        Node treeRightNumber = treeRoot.Right;
         Operator smallTreeRoot = (Operator)smallTree.Root;
-        Node smallTreeRootLeftNumber = smallTreeRoot.Left;
-        Assert.Multiple (() => 
+        if (smallTreeRoot.Left != null && treeRoot.Right != null)
         {
-            Assert.That(Node.Print(smallTreeRootLeftNumber), Is.EqualTo("( 5 )"));
-            Assert.That(Node.Print(treeRightNumber), Is.EqualTo("( 3 )"));
-        });
+            Node smallTreeRootLeftNumber = smallTreeRoot.Left;
+            Node treeRightNumber = treeRoot.Right;
+            Assert.Multiple (() => 
+            {
+                Assert.That(Node.Print(smallTreeRootLeftNumber), Is.EqualTo("( 5 )"));
+                Assert.That(Node.Print(treeRightNumber), Is.EqualTo("( 3 )"));
+            });
+        }
+        else
+        {
+            throw new Exception(); //build tree problem
+        }
 
     }
 }

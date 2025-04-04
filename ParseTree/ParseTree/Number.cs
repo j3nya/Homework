@@ -1,3 +1,7 @@
+// <copyright file="Number.cs" company="Chernoshchokaya Evgenia">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
 namespace ParseTree;
 
 /// <summary>
