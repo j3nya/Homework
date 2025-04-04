@@ -11,10 +11,4 @@ public class Addition : Operator
     {
         return a + b;
     }
-
-    public override string Print()
-    {
-        return string.Empty; //
-    }
-
 }

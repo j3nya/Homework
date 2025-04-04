@@ -1,5 +1,3 @@
-using System.Diagnostics.Contracts;
-
 namespace ParseTree;
 
 /// <summary>
@@ -10,7 +8,7 @@ public class Multiplication : Operator
     /// <summary>
     /// Gets a character representing multiply operation.
     /// </summary>
-    public override char OperationChar { get; } = '/';
+    public override char OperationChar { get; } = '*';
 
     /// <summary>
     /// Counts an expression with two numbers.
@@ -21,10 +19,5 @@ public class Multiplication : Operator
     public override float Operate(float a, float b)
     {
         return a * b;
-    }
-
-    public override string Print()
-    {
-        return string.Empty; //
     }
 }

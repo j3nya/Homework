@@ -17,21 +17,11 @@ public class Number : Node
     }
 
     /// <summary>
-    /// 
+    /// Returns number.
     /// </summary>
-    /// <returns></returns>
+    /// <returns>Number.</returns>
     public override float Evaluate()
     {
         return this.number;
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <returns></returns>
-    public override string Print()
-    {
-        Console.WriteLine(this.number);
-        return $"{this.number}";
     }
 }

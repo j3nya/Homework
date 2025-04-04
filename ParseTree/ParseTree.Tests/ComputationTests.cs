@@ -25,35 +25,43 @@ public class ComputationTests
             Assert.That(ParseTree.EvaluateExpression(inputNegativeDivide), Is.EqualTo((float)-1/2));
         });
     }
+
+    [Test]
     public void CheckIfTreeWithDepthOfThreeComputeIsCorrect()
     {
         string input = "(* (- 1 2) (/ (+ 3 4) 2))";
         string inputNegative = "(* (- -1 2) (/ (+ 3 -4) -2))";
         Assert.Multiple (() =>
         {
-            Assert.That(ParseTree.EvaluateExpression(input), Is.EqualTo((float)-1 * (7/2)));
-            Assert.That(ParseTree.EvaluateExpression(inputNegative), Is.EqualTo((float)-1 * (3/2)));
+            Assert.That(ParseTree.EvaluateExpression(input), Is.EqualTo((float)-7/2));
+            Assert.That(ParseTree.EvaluateExpression(inputNegative), Is.EqualTo((float)-3/2));
         });
 
     }
+
+    [Test]
     public void CheckIfTreeWithDepthOfFiveComputeIsCorrect()
     {
         string input = "(* (- 1 2) (/ (+ (- 3 (+ 1 9)) 4) 2))";
         string inputNegative = "(* (- 1 -2) (/ (+ (- 3 (+ -1 9)) -4) -2))";
         Assert.Multiple (() =>
         {
-            Assert.That(ParseTree.EvaluateExpression(input), Is.EqualTo((float)-1 * (11/2)));
+            Assert.That(ParseTree.EvaluateExpression(input), Is.EqualTo((float)3 / 2));
             Assert.That(ParseTree.EvaluateExpression(inputNegative), Is.EqualTo((float)27/2));
         });
     }
-    public void CheckIfThrowsExceptionWhenDivisorsIs0()
+
+    [Test]
+    public void CheckIfThrowsWhenDivisorsEquals0()
     {
-        string longInput = "(* (- 1 2) (/ 2 (+ (- 3 (+ -3 2)) 4)))";
-        string input = "(/ 1 0)";
-        Assert.Multiple (() => 
-        {
-            Assert.Throws<DivideByZeroException>(() => ParseTree.EvaluateExpression(input));
-            Assert.Throws<DivideByZeroException>(() => ParseTree.EvaluateExpression(longInput));
-        });
+        string longInput = "(* (- 1 2) (/ (+ (- 3 (+ 1 9)) 4) (- 1 1)))";
+        Assert.Throws<DivideByZeroException>(() => ParseTree.EvaluateExpression(longInput));
+    }
+
+    [Test]
+    public void CheckIfOneNumberComputeIsCorrect()
+    {
+        string input = "(1)";
+        Assert.That(ParseTree.EvaluateExpression(input), Is.EqualTo(1));
     }
 }

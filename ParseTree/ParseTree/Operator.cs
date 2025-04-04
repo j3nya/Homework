@@ -1,23 +1,78 @@
 namespace ParseTree;
 
 /// <summary>
-/// 
+/// Class which describes operator.
 /// </summary>
 public abstract class Operator : Node
 {
+    /// <summary>
+    /// Gets a symbol representing operation.
+    /// </summary>
     public abstract char OperationChar { get; }
 
-    internal Node left;
-    internal Node right;
+    /// <summary>
+    /// Gets or sets left operand.
+    /// </summary>
+    public Node? Left { get; set; }
 
+    /// <summary>
+    /// Gets or sets right operand.
+    /// </summary>
+    public Node? Right { get; set; }
+
+    /// <summary>
+    /// Creates certain operator according to provided string.
+    /// </summary>
+    /// <param name="operationChar">Operation's char in string type.</param>
+    /// <returns>Operator corresponding to provided character.</returns>
+    /// <exception cref="Exception">Throws if string is neither of provided operations' representasion.</exception>
+    public static Operator GetOperator(string operationChar)
+    {
+        switch (operationChar)
+        {
+            case "*":
+            {
+                return new Multiplication();
+            }
+
+            case "/":
+            {
+                return new Division();
+            }
+
+            case "-":
+            {
+                return new Substraction();
+            }
+
+            case "+":
+            {
+                return new Addition();
+            }
+        }
+
+        throw new Exception(); //incorrect operation char.
+    }
+
+    /// <summary>
+    /// Operation rule.
+    /// </summary>
+    /// <param name="a">Operand 1.</param>
+    /// <param name="b">Operand 2.</param>
+    /// <returns>Application of the operation.</returns>
     public abstract float Operate(float a, float b);
 
     /// <summary>
-    /// 
+    /// Evaluates an expression where this operation takes place of the root of the tree.
     /// </summary>
-    /// <returns></returns>
+    /// <returns>Computation result.</returns>
     public override float Evaluate()
     {
-        return this.Operate(this.left.Evaluate(), this.right.Evaluate());
+        if (this.Left == null || this.Right == null)
+        {
+            throw new Exception(); //trying to evaluate empty expression.
+        }
+
+        return this.Operate(this.Left.Evaluate(), this.Right.Evaluate());
     }
 }

@@ -25,17 +25,4 @@ public class Division : Operator
 
         throw new DivideByZeroException();
     }
-
-    /// <summary>
-    /// Prints an expression composed of a subtree where this node takes the place of the operator.
-    /// </summary>
-    /// <returns>Text that contains the output.</returns>
-    public override string Print()
-    {
-        if (this.left is Number)
-        {
-
-        }
-        return string.Empty; //
-    }
 }
