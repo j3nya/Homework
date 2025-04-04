@@ -14,27 +14,9 @@ public class InputHandler
     /// </summary>
     /// <param name="input">String to check.</param>
     /// <returns>A value indicating whether the string is valid.</returns>
-    public static bool CheckInput(string input)
+    public static bool CheckInput(string input) // Not implemented yet.
     {
-        const string pattern = @"^\(([+\-*/]) (\S+) (\S+)\)$";
-
-        var match = System.Text.RegularExpressions.Regex.Match(input, pattern);
-        if (!match.Success)
-        {
-            return false;
-        }
-
-        string op = match.Groups[1].Value;
-        if (!IsValidOperator(op))
-        {
-            return false;
-        }
-
-        // Проверяем операнды
-        string operand1 = match.Groups[2].Value;
-        string operand2 = match.Groups[3].Value;
-
-        return IsValidOperand(operand1) && IsValidOperand(operand2);
+        return true;
     }
 
     /// <summary>
@@ -121,38 +103,5 @@ public class InputHandler
         }
 
         return result;
-    }
-
-    private static bool IsValidOperator(string op) =>
-        op == "+" || op == "-" || op == "*" || op == "/";
-
-    private static bool IsValidOperand(string operand)
-    {
-        if (System.Text.RegularExpressions.Regex.IsMatch(operand, @"^-?\d+$"))
-        {
-            return true;
-        }
-
-        if (operand.StartsWith("(") && operand.EndsWith(")"))
-        {
-            return CheckInput(operand);
-        }
-
-        return false;
-    }
-
-    /// <summary>
-    /// Throws if input is incorrect.
-    /// </summary>
-    public class InvalidInputException : Exception
-    {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="InvalidInputException"/> class.
-        /// </summary>
-        /// <param name="message">Message.</param>
-        public InvalidInputException(string message)
-            : base(message)
-        {
-        }
     }
 }
