@@ -79,34 +79,34 @@ public abstract class Operator : Node
 
         return this.Operate(this.Left.Evaluate(), this.Right.Evaluate());
     }
+}
 
+/// <summary>
+/// Throws if operation char is invalid.
+/// </summary>
+public class IncorrectOperationCharException : Exception
+{
     /// <summary>
-    /// Throws if operation char is invalid.
+    /// Initializes a new instance of the <see cref="IncorrectOperationCharException"/> class.
     /// </summary>
-    public class IncorrectOperationCharException : Exception
-    {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="IncorrectOperationCharException"/> class.
-        /// </summary>
-        /// <param name="message">Message.</param>
-        public IncorrectOperationCharException(string message)
-            : base(message)
-            {
-            }
-    }
+    /// <param name="message">Message.</param>
+    public IncorrectOperationCharException(string message)
+        : base(message)
+        {
+        }
+}
 
+/// <summary>
+/// Throws if program tries to compute operation without operands.
+/// </summary>
+public class MeaninglessExpressionException : Exception
+{
     /// <summary>
-    /// Throws if program tries to compute operation without operands.
+    /// Initializes a new instance of the <see cref="MeaninglessExpressionException"/> class.
     /// </summary>
-    public class MeaninglessExpressionException : Exception
-    {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MeaninglessExpressionException"/> class.
-        /// </summary>
-        /// <param name="message">Message.</param>
-        public MeaninglessExpressionException(string message)
-            : base(message)
-            {
-            }
-    }
+    /// <param name="message">Message.</param>
+    public MeaninglessExpressionException(string message)
+        : base(message)
+        {
+        }
 }

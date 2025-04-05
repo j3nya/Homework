@@ -64,4 +64,17 @@ public class ComputationTests
         string input = "(1)";
         Assert.That(ParseTree.EvaluateExpression(input), Is.EqualTo(1));
     }
+
+    [Test]
+    public void CheckIfIncorrectOperationCharThrows()
+    {
+        Assert.Throws<IncorrectOperationCharException>(() => Operator.GetOperator(")"));
+    }
+    [Test]
+    public void CheckMeaninglessExpressionExceptionThrows()
+    {
+        Multiplication multiplication = new Multiplication();
+
+        Assert.Throws<MeaninglessExpressionException>(() => multiplication.Evaluate());
+    }
 }

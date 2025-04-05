@@ -47,7 +47,7 @@ public abstract class Node
     {
         if (root.Left == null || root.Right == null)
         {
-            throw new Operator.MeaninglessExpressionException("Operands are not there");
+            throw new MeaninglessExpressionException("Operands are not there");
         }
 
         Node operand1 = root.Left;
