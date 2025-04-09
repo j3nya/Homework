@@ -39,7 +39,7 @@ public class Map_Filter_Fold
         {
             if (function(list[i]))
             {
-                list.Add(list[i]);
+                result.Add(list[i]);
             }
         }
 
