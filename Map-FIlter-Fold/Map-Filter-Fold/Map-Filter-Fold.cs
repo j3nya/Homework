@@ -55,7 +55,7 @@ public class Map_Filter_Fold
     /// <returns>Folded value after bypassing the whole list.</returns>
     public static int Fold(List<int> list, int firstElement, Func<int, int, int> function)
     {
-        foldedValue = firstElement;
+        int foldedValue = firstElement;
         for (int i = 0; i < list.Count; i++)
         {
             foldedValue = function(foldedValue, list[i]);
