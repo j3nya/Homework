@@ -21,6 +21,8 @@ public class Tests
     public void CheckIfFoldWorks()
     {
         Assert.That(Map_Filter_Fold.Fold(new List<int>{1, 2, 3}, 1, (acc, elem) => acc * elem), Is.EqualTo(6));
+        Assert.That(Map_Filter_Fold.Fold(new List<int>{1, 2, 3}, 1, (acc, elem) => acc * elem), !Is.EqualTo(1));
         Assert.That(Map_Filter_Fold.Fold(new List<int>{1, 2, 3}, 2, (acc, elem) => acc * elem), !Is.EqualTo(6));
+        Assert.That(Map_Filter_Fold.Fold(new List<int>{1, 2, 3}, 2, (acc, elem) => acc * elem), Is.EqualTo(12));
     }
 }

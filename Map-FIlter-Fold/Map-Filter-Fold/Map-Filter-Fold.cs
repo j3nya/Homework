@@ -61,6 +61,6 @@ public class Map_Filter_Fold
             foldedValue = function(foldedValue, list[i]);
         }
 
-        return firstElement;
+        return foldedValue;
     }
 }
