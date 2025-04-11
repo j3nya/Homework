@@ -13,7 +13,7 @@ public class Map_Filter_Fold
     /// Mapping function.
     /// </summary>
     /// <param name="list">List to which elements need to apply the function.</param>
-    /// <param name="Function which applies to each element."></param>
+    /// <param name="function">Function that takes int and returns int which applies to each element.</param>
     /// <returns>The list obtained by applying the passed function to each element of the passed list.</returns>
     public static List<int> Map(List<int> list, Func<int, int> function)
     {
@@ -30,7 +30,7 @@ public class Map_Filter_Fold
     /// Filtering function.
     /// </summary>
     /// <param name="list">List to filter.</param>
-    /// <param name="function">Filtering function.</param>
+    /// <param name="function">Function that takes int and returns bool which applies to each element.</param>
     /// <returns>List composed of those elements of the passed list for which the passed function returned true.</returns>
     public static List<int> Filter(List<int> list, Func<int, bool> function)
     {
