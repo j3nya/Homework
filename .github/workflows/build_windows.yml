@@ -1,0 +1,17 @@
+name: BuildWindows
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0'
+      - name: BuildWindows
+        run: |
+          find . -name "*.sln" | while read solution; do
+            dotnet build "$solution"
+          done
