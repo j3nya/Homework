@@ -10,8 +10,10 @@ jobs:
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '9.0'
-      - name: TestWindows
+      - name: Run tests
         run: |
-          find . -name "*.sln" | while read solution; do
-            dotnet test "$solution"
-          done
+          Get-ChildItem -Path "." -Filter "*Tests.csproj" -Recurse | ForEach-Object {
+            $testProject = $_.FullName
+            Write-Host "Testing project: $($testProject)"
+            dotnet test "$testProject" --no-restore --verbosity normal
+          }
