@@ -9,6 +9,8 @@ namespace RunningButton
     /// </summary>
     public partial class RunningButtonForm : Form
     {
+        private static Random random = new Random();
+
         /// <summary>
         /// Initializes a new instance of the <see cref="RunningButtonForm"/> class.
         /// Running button form.
@@ -20,7 +22,6 @@ namespace RunningButton
 
         private void RunningButton_MouseMove(object sender, MouseEventArgs e)
         {
-            Random random = new Random();
             int x = 0;
             int y = 0;
             while (!((x + this.RunningButton.Size.Width < e.X || x > e.X) && (y + this.RunningButton.Size.Height < e.Y || y > e.Y))) // condition in which button can not be pressed.
