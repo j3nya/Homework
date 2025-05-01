@@ -11,8 +11,6 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '9.0'
-      - name: Restore dependencies
-        run: dotnet restore
       - name: Build solution
         run: |
           Get-ChildItem -Path "." -Filter "*.sln" -Recurse | ForEach-Object {
