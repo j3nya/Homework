@@ -7,11 +7,14 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-dotnet@v4
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '9.0'
-      - name: BuildWindows
+      - name: Build solution
         run: |
-          find . -name "*.sln" | while read solution; do
-            dotnet build "$solution"
-          done
+          Get-ChildItem -Path "." -Filter "*.sln" -Recurse | ForEach-Object {
+            $solution = $_.FullName
+            Write-Host "Building solution: $($solution)"
+            dotnet build "$solution" --configuration Release
+          }
