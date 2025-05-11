@@ -1,4 +1,9 @@
-﻿if (CheckInputArgs(args))
+﻿// <copyright file="Program.cs" company="Chernoshchokaya Evgenia">
+// Copyright (c) Chernoshchokaya Evgenia. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// </copyright>
+
+if (CheckInputArgs(args))
 {
     string[] input = File.ReadAllLines(args[0]);
     if (!NetworkOptimizer.NetworkOptimizer.CheckInput(input))

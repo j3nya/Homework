@@ -1,3 +1,8 @@
+// <copyright file="Graph.cs" company="Chernoshchokaya Evgenia">
+// Copyright (c) Chernoshchokaya Evgenia. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// </copyright>
+
 namespace Graph;
 
 /// <summary>
@@ -80,13 +85,13 @@ public class Graph
             var adjacentVertices = this.AdjacencyList[currentVertex - 1];
             for (int i = 0; i < adjacentVertices.Count; i++)
             {
-                int adjacentVertex = adjacentVertices[i].Item1;
+                int adjacentVertex = adjacentVertices[i].vertex;
                 if (adjacentVertex == vertex2)
                 {
                     return true;
                 }
 
-                int adjacentVertexNumber = adjacentVertices[i].Item1 - 1;
+                int adjacentVertexNumber = adjacentVertices[i].vertex - 1;
                 if (!isVisited[adjacentVertexNumber])
                 {
                     isVisited[adjacentVertexNumber] = true;

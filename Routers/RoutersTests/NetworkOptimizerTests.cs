@@ -1,6 +1,6 @@
 namespace NetworkOptimizerTests;
 
-public class Tests
+public class NetworkOptimizerTests
 {
     private Graph.Graph graph1;
     private Graph.Graph graph2;
@@ -26,11 +26,13 @@ public class Tests
     {
         Assert.That(NetworkOptimizer.NetworkOptimizer.CheckInput(input1));
     }
+
     public void CheckIfCorrectInputReturnsTrue()
     {
         input1[0] += 1;
         Assert.That(!NetworkOptimizer.NetworkOptimizer.CheckInput(input1));
     }
+
     public void CheckIfBuildGraphBuildsCorrectGraph()
     {
         Assert.Multiple(() =>
@@ -43,6 +45,7 @@ public class Tests
             Assert.That(graph2.AdjacencyList[4][0], Is.EqualTo((3, 1)));
         });
     }
+
     public void CheckIfBuildMSTReturnsTree()
     {
         graph1 = NetworkOptimizer.NetworkOptimizer.BuildMST(graph1);
@@ -53,20 +56,21 @@ public class Tests
             Assert.That(graph2.CheckIfConnected());
         });
     }
+
     public void CheckIfGraphToStringArrayReturnsCorrectOutput()
     {
         string[] output1 = NetworkOptimizer.NetworkOptimizer.GraphToStringArray(graph1);
         string[] output2 = NetworkOptimizer.NetworkOptimizer.GraphToStringArray(graph2);
         graph1 = NetworkOptimizer.NetworkOptimizer.BuildMST(graph1);
         graph2 = NetworkOptimizer.NetworkOptimizer.BuildMST(graph2);
-        string[] MSToutput1 = NetworkOptimizer.NetworkOptimizer.GraphToStringArray(graph1);
-        string[] MSToutput2 = NetworkOptimizer.NetworkOptimizer.GraphToStringArray(graph2);
+        string[] outputMST1 = NetworkOptimizer.NetworkOptimizer.GraphToStringArray(graph1);
+        string[] outputMST2 = NetworkOptimizer.NetworkOptimizer.GraphToStringArray(graph2);
         Assert.Multiple(() =>
         {
             Assert.That(output1 == input1);
             Assert.That(output2 == input2);
-            Assert.That(NetworkOptimizer.NetworkOptimizer.CheckInput(MSToutput1));
-            Assert.That(NetworkOptimizer.NetworkOptimizer.CheckInput(MSToutput2));
+            Assert.That(NetworkOptimizer.NetworkOptimizer.CheckInput(outputMST1));
+            Assert.That(NetworkOptimizer.NetworkOptimizer.CheckInput(outputMST2));
         });
     }
 }

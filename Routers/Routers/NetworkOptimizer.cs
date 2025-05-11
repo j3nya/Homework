@@ -1,3 +1,8 @@
+// <copyright file="NetworkOptimizer.cs" company="Chernoshchokaya Evgenia">
+// Copyright (c) Chernoshchokaya Evgenia. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// </copyright>
+
 namespace NetworkOptimizer;
 using Graph;
 
@@ -183,7 +188,7 @@ public class NetworkOptimizer
         {
             for (int adjacentVertexNumber = 0; adjacentVertexNumber < graph.AdjacencyList[vertexNumber].Count; adjacentVertexNumber++)
             {
-                edges.Add((vertexNumber + 1, graph.AdjacencyList[vertexNumber][adjacentVertexNumber].Item1, graph.AdjacencyList[vertexNumber][adjacentVertexNumber].Item2));
+                edges.Add((vertexNumber + 1, graph.AdjacencyList[vertexNumber][adjacentVertexNumber].vertex, graph.AdjacencyList[vertexNumber][adjacentVertexNumber].weight));
             }
         }
 
@@ -218,16 +223,16 @@ public class NetworkOptimizer
             int numberOfAdjacentVertices = graph.AdjacencyList[vertexNumber].Count;
             for (int adjacentVertexNumber = 0; adjacentVertexNumber < numberOfAdjacentVertices - 1; adjacentVertexNumber++)
             {
-                int adjacentVertex = graph.AdjacencyList[vertexNumber][adjacentVertexNumber].Item1;
-                int weight = graph.AdjacencyList[vertexNumber][adjacentVertexNumber].Item2;
+                int adjacentVertex = graph.AdjacencyList[vertexNumber][adjacentVertexNumber].vertex;
+                int weight = graph.AdjacencyList[vertexNumber][adjacentVertexNumber].weight;
                 if (adjacentVertex > vertex)
                 {
                     output[vertexNumber] += adjacentVertex + " (" + weight + ")" + ", ";
                 }
             }
 
-            int lastAdjacentVertex = graph.AdjacencyList[vertexNumber][numberOfAdjacentVertices - 1].Item1;
-            int lastWeight = graph.AdjacencyList[vertexNumber][numberOfAdjacentVertices - 1].Item2;
+            int lastAdjacentVertex = graph.AdjacencyList[vertexNumber][numberOfAdjacentVertices - 1].vertex;
+            int lastWeight = graph.AdjacencyList[vertexNumber][numberOfAdjacentVertices - 1].weight;
             if (lastAdjacentVertex > vertex)
             {
                 output[vertexNumber] += lastAdjacentVertex + " (" + lastWeight + ")";
