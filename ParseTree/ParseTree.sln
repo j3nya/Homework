@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ParseTree", "ParseTree", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParseTree", "ParseTree\ParseTree.csproj", "{A7610C5B-2571-4CEB-AD00-5A7E25DF62F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParseTree.Tests", "ParseTree.Tests\ParseTree.Tests.csproj", "{DA45F133-B32E-426D-B58F-A600FFF045EF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParseTree.Tests", "ParseTreeTests\ParseTreeTests.csproj", "{DA45F133-B32E-426D-B58F-A600FFF045EF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

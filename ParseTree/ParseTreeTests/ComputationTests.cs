@@ -13,16 +13,16 @@ public class ComputationTests
         string inputNegativeMiltiply = "(* -1 -2)";
         string inputNegativeAdd = "(+ 1 -2)";
         string inputNegativeDivide = "(/ -1 2)";
-        Assert.Multiple (() =>
+        Assert.Multiple(() =>
         {
-            Assert.That(ParseTree.EvaluateExpression(inputSubstract), Is.EqualTo((float)-1));
-            Assert.That(ParseTree.EvaluateExpression(inputMiltiply), Is.EqualTo((float)2));
-            Assert.That(ParseTree.EvaluateExpression(inputAdd), Is.EqualTo((float)3));
-            Assert.That(ParseTree.EvaluateExpression(inputDivide), Is.EqualTo((float)1/ 2));
-            Assert.That(ParseTree.EvaluateExpression(inputNegativeSubstract), Is.EqualTo((float)3));
-            Assert.That(ParseTree.EvaluateExpression(inputNegativeMiltiply), Is.EqualTo((float)2));
-            Assert.That(ParseTree.EvaluateExpression(inputNegativeAdd), Is.EqualTo((float)-1));
-            Assert.That(ParseTree.EvaluateExpression(inputNegativeDivide), Is.EqualTo((float)-1/2));
+            Assert.That(ParseTree.EvaluateExpression(inputSubstract), Is.EqualTo(-1F));
+            Assert.That(ParseTree.EvaluateExpression(inputMiltiply), Is.EqualTo(2F));
+            Assert.That(ParseTree.EvaluateExpression(inputAdd), Is.EqualTo(3F));
+            Assert.That(ParseTree.EvaluateExpression(inputDivide), Is.EqualTo(1F / 2));
+            Assert.That(ParseTree.EvaluateExpression(inputNegativeSubstract), Is.EqualTo(3F));
+            Assert.That(ParseTree.EvaluateExpression(inputNegativeMiltiply), Is.EqualTo(2F));
+            Assert.That(ParseTree.EvaluateExpression(inputNegativeAdd), Is.EqualTo(-1F));
+            Assert.That(ParseTree.EvaluateExpression(inputNegativeDivide), Is.EqualTo(-1F / 2));
         });
     }
 
@@ -31,12 +31,11 @@ public class ComputationTests
     {
         string input = "(* (- 1 2) (/ (+ 3 4) 2))";
         string inputNegative = "(* (- -1 2) (/ (+ 3 -4) -2))";
-        Assert.Multiple (() =>
+        Assert.Multiple(() =>
         {
-            Assert.That(ParseTree.EvaluateExpression(input), Is.EqualTo((float)-7/2));
-            Assert.That(ParseTree.EvaluateExpression(inputNegative), Is.EqualTo((float)-3/2));
+            Assert.That(ParseTree.EvaluateExpression(input), Is.EqualTo(-7F / 2));
+            Assert.That(ParseTree.EvaluateExpression(inputNegative), Is.EqualTo(-3F / 2));
         });
-
     }
 
     [Test]
@@ -44,10 +43,10 @@ public class ComputationTests
     {
         string input = "(* (- 1 2) (/ (+ (- 3 (+ 1 9)) 4) 2))";
         string inputNegative = "(* (- 1 -2) (/ (+ (- 3 (+ -1 9)) -4) -2))";
-        Assert.Multiple (() =>
+        Assert.Multiple(() =>
         {
-            Assert.That(ParseTree.EvaluateExpression(input), Is.EqualTo((float)3 / 2));
-            Assert.That(ParseTree.EvaluateExpression(inputNegative), Is.EqualTo((float)27/2));
+            Assert.That(ParseTree.EvaluateExpression(input), Is.EqualTo(3F / 2));
+            Assert.That(ParseTree.EvaluateExpression(inputNegative), Is.EqualTo(27F / 2));
         });
     }
 
@@ -70,6 +69,7 @@ public class ComputationTests
     {
         Assert.Throws<IncorrectOperationCharException>(() => Operator.GetOperator(")"));
     }
+
     [Test]
     public void CheckMeaninglessExpressionExceptionThrows()
     {

@@ -5,7 +5,7 @@ public class CheckInputTests
     [Test]
     public void CheckIfCorrectInputReturnsTrue()
     {
-        Assert.Multiple (() =>
+        Assert.Multiple(() =>
         {
             Assert.That(InputHandler.CheckInput("(* 3 1)"));
             Assert.That(InputHandler.CheckInput("(* (- 1 -2) (/ (+ (- 3 (+ -1 9)) -4) -2))"));
@@ -16,25 +16,27 @@ public class CheckInputTests
     [Test]
     public void CheckIfIncorrectInputReturnsFalse()
     {
-        Assert.Multiple (() =>
+        Assert.Multiple(() =>
         {
-            Assert.That(!InputHandler.CheckInput(""));
+            Assert.That(!InputHandler.CheckInput(string.Empty));
             Assert.That(!InputHandler.CheckInput("()"));
             Assert.That(!InputHandler.CheckInput("9"));
             Assert.That(!InputHandler.CheckInput("(* ( 1 -2) (/ (+ (- 3 + -1 9)) -4) -2)"));
         });
     }
+
     [Test]
     public void CheckIfIncorrectInputExceptionThrows()
     {
-        Assert.Throws<IncorrectInputException>(() => ParseTree.EvaluateExpression(""));
+        Assert.Throws<IncorrectInputException>(() => ParseTree.EvaluateExpression(string.Empty));
     }
+
     [Test]
     public void CheckIfToNodesWorksCorrectly()
     {
         string longInput = "(* (- 1 -2) (/ (+ (- 3 (+ -1 9)) -4) -2))";
         string input = "(* 3 1)";
-        Assert.Multiple (() =>
+        Assert.Multiple(() =>
         {
             Assert.That(InputHandler.ToNodes(longInput)[0], Is.EqualTo("*"));
             Assert.That(InputHandler.ToNodes(longInput)[1], Is.EqualTo("(- 1 -2)"));

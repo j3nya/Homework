@@ -19,17 +19,18 @@ public class PrintTests
         tree = new ParseTree(input);
         smallTree = new ParseTree(shortInput);
     }
+
     [Test]
-    
     public void CheckIfTreePrintIsCorrect()
     {
-        Assert.Multiple (() =>
+        Assert.Multiple(() =>
         {
             Assert.That(Node.Print(bigTree.Root), Is.EqualTo("( * ( - 1 2 ) ( / ( + ( - 3 ( + 1 9 ) ) 4 ) 2 ) )"));
             Assert.That(Node.Print(tree.Root), Is.EqualTo("( * ( - 1 2 ) 3 )"));
             Assert.That(Node.Print(smallTree.Root), Is.EqualTo("( - 5 3 )"));
         });
     }
+
     [Test]
     public void CheckIfSubtreePrintIsCorrect()
     {
@@ -40,20 +41,15 @@ public class PrintTests
             Operator bigTreeLeftSubtreeRoot = (Operator)bigTreeRoot.Left;
             Operator bigTreeRightSubtreeRoot = (Operator)bigTreeRoot.Right;
             Operator treeLeftSubtreeRoot = (Operator)treeRoot.Left;
-            Assert.Multiple (() =>
+            Assert.Multiple(() =>
             {
                 Assert.That(Node.Print(bigTreeLeftSubtreeRoot), Is.EqualTo("( - 1 2 )"));
                 Assert.That(Node.Print(bigTreeRightSubtreeRoot), Is.EqualTo("( / ( + ( - 3 ( + 1 9 ) ) 4 ) 2 )"));
                 Assert.That(Node.Print(treeLeftSubtreeRoot), Is.EqualTo("( - 1 2 )"));
-
             });
         }
-        else
-        {
-            throw new Exception(); //build tree problem.
-        }
-
     }
+
     [Test]
     public void CheckIfNumberPrintsCorrect()
     {
@@ -63,16 +59,11 @@ public class PrintTests
         {
             Node smallTreeRootLeftNumber = smallTreeRoot.Left;
             Node treeRightNumber = treeRoot.Right;
-            Assert.Multiple (() => 
+            Assert.Multiple(() =>
             {
                 Assert.That(Node.Print(smallTreeRootLeftNumber), Is.EqualTo("( 5 )"));
                 Assert.That(Node.Print(treeRightNumber), Is.EqualTo("( 3 )"));
             });
         }
-        else
-        {
-            throw new Exception(); //build tree problem
-        }
-
     }
 }
