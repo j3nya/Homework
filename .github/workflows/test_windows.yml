@@ -1,0 +1,19 @@
+name: TestWindows
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0'
+      - name: Run tests
+        run: |
+          Get-ChildItem -Path "." -Filter "*Tests.csproj" -Recurse | ForEach-Object {
+            $testProject = $_.FullName
+            Write-Host "Testing project: $($testProject)"
+            dotnet test "$testProject" --no-restore --verbosity normal
+          }
