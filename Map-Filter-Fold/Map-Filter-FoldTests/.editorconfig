@@ -1,0 +1,5 @@
+root = true
+
+[*.cs]
+dotnet_diagnostic.SA1600.severity = none
+dotnet_diagnostic.SA1633.severity = none
