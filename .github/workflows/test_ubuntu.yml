@@ -1,0 +1,22 @@
+name: TestUbuntu
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0'
+      - name: TestUbuntu
+        run: |
+          find . -name "*.sln" -print0 | while IFS= read -r -d $'\0' solution; do
+            folder=$(dirname "$solution")
+            if [[ ! "$folder" =~ ^Windows- ]]; then
+              dotnet test "$solution"
+            else
+              echo "Пропускается решение в папке '$folder', начинающейся на 'Windows-'."
+            fi
+          done
