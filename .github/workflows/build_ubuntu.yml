@@ -1,0 +1,22 @@
+name: BuildUbuntu
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0'
+      - name: BuildUbuntu
+        run: |
+          find . -name "*.sln" -print0 | while IFS= read -r -d $'\0' solution; do
+            folder=$(dirname "$solution")
+            if [[ ! "$folder" =~ ^Windows- ]]; then
+              dotnet build "$solution"
+            else
+              echo "Пропускается решение в папке '$folder', начинающейся на 'Windows-'."
+            fi
+          done
