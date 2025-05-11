@@ -1,0 +1,20 @@
+name: BuildWindows
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0'
+      - name: Build solution
+        run: |
+          Get-ChildItem -Path "." -Filter "*.sln" -Recurse | ForEach-Object {
+            $solution = $_.FullName
+            Write-Host "Building solution: $($solution)"
+            dotnet build "$solution" --configuration Release
+          }
