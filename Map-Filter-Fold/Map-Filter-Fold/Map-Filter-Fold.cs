@@ -8,7 +8,7 @@ namespace Map_Filter_Fold;
 /// <summary>
 /// class containing Map, Filter and Fold methods.
 /// </summary>
-public class Map_Filter_Fold
+public static class Map_Filter_Fold
 {
     /// <summary>
     /// Mapping function.
@@ -51,12 +51,12 @@ public class Map_Filter_Fold
     /// Folding function.
     /// </summary>
     /// <param name="list">List to bypass by function.</param>
-    /// <param name="firstElement">Element to start from.</param>
+    /// <param name="initialValue">Element to start from.</param>
     /// <param name="function">Function which takes as arguments first element, and element of the list and returns the result of applying the operation to them.</param>
     /// <returns>Folded value after bypassing the whole list.</returns>
-    public static int Fold(List<int> list, int firstElement, Func<int, int, int> function)
+    public static int Fold(List<int> list, int initialValue, Func<int, int, int> function)
     {
-        int foldedValue = firstElement;
+        int foldedValue = initialValue;
         for (int i = 0; i < list.Count; i++)
         {
             foldedValue = function(foldedValue, list[i]);
