@@ -18,9 +18,12 @@ public abstract class Node
     public static string Print(Node root)
     {
         string stringToPrint = "( ";
-        if (root is Number) // case for tree containing one number.
+
+        // case for tree containing one number.
+        if (root is Number)
         {
-            stringToPrint += root.Evaluate() + " ) "; // for number evaluate method returns number.
+            // For number evaluate method returns number.
+            stringToPrint += root.Evaluate() + " ) ";
         }
         else
         {
@@ -30,7 +33,9 @@ public abstract class Node
         }
 
         Console.WriteLine(stringToPrint);
-        return stringToPrint.Remove(stringToPrint.Length - 1); // Remove space.
+
+        // Remove space.
+        return stringToPrint.Remove(stringToPrint.Length - 1);
     }
 
     /// <summary>
@@ -75,6 +80,7 @@ public abstract class Node
             stringToPrint += operand2.Evaluate() + " ";
         }
 
-        stringToPrint += ") "; // after every second operand add closing brace.
+        // After every second operand add closing brace.
+        stringToPrint += ") ";
     }
 }

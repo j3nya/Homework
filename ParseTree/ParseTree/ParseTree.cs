@@ -60,7 +60,7 @@ public class ParseTree
         {
             string[] nodes = InputHandler.ToNodes(operand1);
             root.Left = Operator.GetOperator(nodes[0]);
-            BuildRecursively((Operator)root.Left, nodes); // call recursively for left branch.
+            BuildRecursively((Operator)root.Left, nodes);
         }
         else
         {
@@ -73,7 +73,7 @@ public class ParseTree
         {
             string[] nodes = InputHandler.ToNodes(operand2);
             root.Right = Operator.GetOperator(nodes[0]);
-            BuildRecursively((Operator)root.Right, nodes); // call recursively for right branch.
+            BuildRecursively((Operator)root.Right, nodes);
         }
         else
         {

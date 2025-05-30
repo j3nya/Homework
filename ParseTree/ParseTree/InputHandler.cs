@@ -78,10 +78,13 @@ public class InputHandler
         }
 
         string[] result = new string[3];
-        int charPosition = 1; // starting at second char skipping opening brace.
+
+        // Starting at second char skipping opening brace.
+        int charPosition = 1;
         while (input[charPosition] != ' ')
         {
-            if (input[charPosition] == ')') // case when tree has one node.
+            // Case when tree has one node.
+            if (input[charPosition] == ')')
             {
                 return result;
             }
@@ -90,12 +93,15 @@ public class InputHandler
             charPosition++;
         }
 
-        charPosition++; // skip space.
+        // Skip space.
+        charPosition++;
 
         if (input[charPosition] == '(')
         {
             result[1] += input[charPosition];
-            charPosition++; // skip opening brace.
+
+            // Skip opening brace.
+            charPosition++;
             int braceCount = 1;
             for (; braceCount != 0; charPosition++)
             {
@@ -121,7 +127,8 @@ public class InputHandler
             }
         }
 
-        charPosition++; // skip space.
+        // Skip space.
+        charPosition++;
 
         if (input[charPosition] == '(')
         {
@@ -159,7 +166,8 @@ public class InputHandler
     {
         if (input[charPosition] == '(')
         {
-            charPosition++; // getting to the operator.
+            // Getting to the operator.
+            charPosition++;
             if (!IsOperator(input[charPosition]))
             {
                 return false;
@@ -171,7 +179,8 @@ public class InputHandler
                 return false;
             }
 
-            charPosition++; // getting to the operand1.
+            // Getting to the operand1.
+            charPosition++;
             if (!CheckInputRecursively(input, ref charPosition))
             {
                 return false;
@@ -183,7 +192,8 @@ public class InputHandler
                 return false;
             }
 
-            charPosition++; // getting to the operand2.
+            // Getting to the operand2.
+            charPosition++;
             if (!CheckInputRecursively(input, ref charPosition))
             {
                 return false;
@@ -203,7 +213,8 @@ public class InputHandler
             {
                 if (input[charPosition] == ' ')
                 {
-                    charPosition--; // after leaving CheckInputRecursively charPosition always points at last character of the node.
+                    // After leaving CheckInputRecursively charPosition always points at last character of the node.
+                    charPosition--;
                     break;
                 }
 
