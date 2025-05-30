@@ -20,8 +20,11 @@ public class NetworkOptimizer
     {
         for (int lineNumber = 0; lineNumber < input.Length; lineNumber++)
         {
-            string[] elements = input[lineNumber].Split(" "); // split into an array of routers and the bandwidth between them.
-            if (!elements[0].EndsWith(':')) // checking first element.
+            // Split into an array of routers and the bandwidth between them.
+            string[] elements = input[lineNumber].Split(" ");
+
+            // Checking first element.
+            if (!elements[0].EndsWith(':'))
             {
                 return false;
             }
@@ -95,7 +98,9 @@ public class NetworkOptimizer
             string currentVertex = string.Empty;
             string currentVertexWeight = string.Empty;
             string firstNumber = string.Empty;
-            for (int charNumber = 0; charNumber < lines[lineNumber].Length; charNumber++) // go down the line.
+
+            // Go down the line.
+            for (int charNumber = 0; charNumber < lines[lineNumber].Length; charNumber++)
             {
                 char currentChar = lines[lineNumber][charNumber];
                 if (charNumber == 0)
@@ -114,26 +119,34 @@ public class NetworkOptimizer
                     {
                         currentVertex += currentChar;
                         charNumber++;
-                        currentChar = lines[lineNumber][charNumber]; // update the variable.
+
+                        // Update the variable.
+                        currentChar = lines[lineNumber][charNumber];
                     }
                 }
 
                 if (currentChar == '(')
                 {
                     charNumber++;
-                    currentChar = lines[lineNumber][charNumber]; // go one character further.
+
+                    // Go one character further.
+                    currentChar = lines[lineNumber][charNumber];
                     while (currentChar != ')')
                     {
                         currentVertexWeight += currentChar;
                         charNumber++;
-                        currentChar = lines[lineNumber][charNumber]; // update the variable.
+
+                        // Update the variable.
+                        currentChar = lines[lineNumber][charNumber];
                     }
 
                     int vertex1 = Convert.ToInt32($"{firstNumber}");
                     int vertex2 = Convert.ToInt32(currentVertex);
                     int weight = Convert.ToInt32(currentVertexWeight);
                     int vertex2Number = vertex2 - 1;
-                    if (vertex2 > isAdded.Count) // checks if the next vertex is outside the list.
+
+                    // Checks if the next vertex is outside the list.
+                    if (vertex2 > isAdded.Count)
                     {
                         for (int i = isAdded.Count; i < vertex2Number; i++)
                         {
@@ -166,7 +179,8 @@ public class NetworkOptimizer
 
                     graph.AddEdge(vertex1, vertex2, weight);
 
-                    currentVertex = string.Empty; // zero the rows (since we have already added an edge).
+                    // Zero the rows (since we have already added an edge).
+                    currentVertex = string.Empty;
                     currentVertexWeight = string.Empty;
                 }
             }
