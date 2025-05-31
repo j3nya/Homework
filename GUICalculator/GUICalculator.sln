@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.13.35931.197 d17.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUICalculator", "GUICalculator\GUICalculator.csproj", "{6C9B520B-86F1-406F-BE15-EF09593C1677}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUICalculator", "Windows-GUICalculator\GUICalculator.csproj", "{6C9B520B-86F1-406F-BE15-EF09593C1677}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUICalculator.Tests", "GUICalculator.Tests\Calculator.Tests.csproj", "{199513D0-AE5D-4590-A45F-D3DFE330D8EB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculatorTests", "Windows-GUICalculatorTests\CalculatorTests.csproj", "{199513D0-AE5D-4590-A45F-D3DFE330D8EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
