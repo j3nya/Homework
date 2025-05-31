@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <AdditionalFiles Include="stylecop.json" />
     <PackageReference Include="stylecop.analyzers" Version="1.1.118">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>

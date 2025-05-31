@@ -8,9 +8,9 @@ public class TrieTests
 {
     private Trie trie;
 
-/// <summary>
-/// Method which is called before each test is run.
-/// </summary>
+    /// <summary>
+    /// Method which is called before each test is run.
+    /// </summary>
     [SetUp]
     public void Setup()
     {
@@ -21,79 +21,28 @@ public class TrieTests
         this.trie.Add("Sobak");
     }
 
-/// <summary>
-/// Checks for incorrect input in the Add function.
-/// </summary>
-    [Test]
-
-    public void CheckInvalidStringCaseForAdd()
-    {
-        Assert.That(this.trie.Add("Русскоеслово"), Is.EqualTo(false));
-        Assert.That(this.trie.Add(string.Empty), Is.EqualTo(false));
-    }
-
-/// <summary>
-/// Checks for incorrect input in the Contains function.
-/// </summary>
-    [Test]
-
-    public void CheckInvalidStringCaseForContains()
-    {
-        Assert.That(this.trie.Contains("Русскоеслово"), Is.EqualTo(false));
-        Assert.That(this.trie.Contains(string.Empty), Is.EqualTo(false));
-    }
-
-/// <summary>
-/// Checks for incorrect input in Remove function.
-/// </summary>
-    [Test]
-
-    public void CheckInvalidStringCaseForRemove()
-    {
-        Assert.Multiple(() =>
-        {
-            Assert.That(this.trie.Remove("Русскоеслово"), Is.EqualTo(false));
-            Assert.That(this.trie.Remove(string.Empty), Is.EqualTo(false));
-        });
-    }
-
-/// <summary>
-/// Checks for incorrect input in the HowManyStartsWithPrefix function.
-/// </summary>
-    [Test]
-
-    public void CheckInvalidStringCaseForHowManyStartsWithPrefix()
-    {
-        Assert.Multiple(() =>
-        {
-            Assert.That(this.trie.HowManyStartWithPrefix("Русскоеслово"), Is.EqualTo(0));
-            Assert.That(this.trie.HowManyStartWithPrefix(string.Empty), Is.EqualTo(0));
-        });
-    }
-
-/// <summary>
-/// Check if contains returns true when the word is actually contained in the trie.
-/// </summary>
+    /// <summary>
+    /// Check if contains returns true when the word is actually contained in the trie.
+    /// </summary>
     [Test]
     public void CheckIfContainsReturnsTrue()
     {
         Assert.That(this.trie.Contains("Sobaka"));
     }
 
-/// <summary>
-/// Check if contains returns false when the word is not in the trie.
-/// </summary>
+    /// <summary>
+    /// Check if contains returns false when the word is not in the trie.
+    /// </summary>
     [Test]
     public void CheckIfContainsReturnsFalse()
     {
         Assert.That(!this.trie.Contains("Medved"));
     }
 
-/// <summary>
-/// Check if HowManyStartsWithPrefix returns the correct number of words beginning with the given prefix.
-/// </summary>
+    /// <summary>
+    /// Check if HowManyStartsWithPrefix returns the correct number of words beginning with the given prefix.
+    /// </summary>
     [Test]
-
     public void CheckIfHowManyStartsWithPrefixReturnsRightAmount()
     {
         Assert.Multiple(() =>
@@ -104,11 +53,10 @@ public class TrieTests
         });
     }
 
-/// <summary>
-/// Check if Remove returns false when the word was not in the trie.
-/// </summary>
+    /// <summary>
+    /// Check if Remove returns false when the word was not in the trie.
+    /// </summary>
     [Test]
-
     public void CheckIfRemoveReturnsFalse()
     {
         Assert.Multiple(() =>
@@ -118,11 +66,10 @@ public class TrieTests
         });
     }
 
-/// <summary>
-/// Check if Remove removes a word from the trie.
-/// </summary>
+    /// <summary>
+    /// Check if Remove removes a word from the trie.
+    /// </summary>
     [Test]
-
     public void CheckIfRemoveRemovesString()
     {
         Assert.Multiple(() =>
@@ -132,9 +79,9 @@ public class TrieTests
         });
     }
 
-/// <summary>
-/// Check if removing prefix leaves words containing prefix.
-/// </summary>
+    /// <summary>
+    /// Check if removing prefix leaves words containing prefix.
+    /// </summary>
     [Test]
     public void CheckIfRemoveRemovesPrefix()
     {
@@ -142,9 +89,9 @@ public class TrieTests
         Assert.That(this.trie.Contains("Sobaka"), Is.EqualTo(true));
     }
 
-/// <summary>
-/// Check if removing word containing prefix leaves prefix.
-/// </summary>
+    /// <summary>
+    /// Check if removing word containing prefix leaves prefix.
+    /// </summary>
     [Test]
     public void CheckIfRemovesWordWithContainingPrefixes()
     {
@@ -152,22 +99,20 @@ public class TrieTests
         Assert.That(this.trie.Contains("Sobak"), Is.EqualTo(true));
     }
 
-/// <summary>
-/// Check if Add adds a word to trie.
-/// </summary>
+    /// <summary>
+    /// Check if Add adds a word to trie.
+    /// </summary>
     [Test]
-
     public void CheckIfAddAddsString()
     {
         Assert.That(this.trie.Add("Medved"), Is.EqualTo(true));
         Assert.That(this.trie.Contains("Medved"), Is.EqualTo(true));
     }
 
-/// <summary>
-/// Check if Add returns false when the word was already in the trie.
-/// </summary>
+    /// <summary>
+    /// Check if Add returns false when the word was already in the trie.
+    /// </summary>
     [Test]
-
     public void CheckIfAddReturnsFalse()
     {
         Assert.That(this.trie.Add("Sobaka"), Is.EqualTo(false));

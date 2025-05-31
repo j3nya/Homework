@@ -19,7 +19,7 @@ public class Trie
     /// <returns> Value indicating whether such a string has already been added. </returns>
     public bool Add(string element)
     {
-        if (CheckInputString(element))
+        if (CheckInputString(element) || this.Contains(element))
         {
             return false;
         }
@@ -27,11 +27,6 @@ public class Trie
         int currentVertex = 0;
         for (int i = 0; i < element?.Length; i++)
         {
-            if (CheckInputStringsChar(element, i))
-            {
-                return false;
-            }
-
             Vertex? nextVertex;
             if (!this.vertices[currentVertex].Next.TryGetValue(element[i], out nextVertex))
             {
@@ -44,27 +39,6 @@ public class Trie
             nextVertex.TimesVisited++;
 
             currentVertex = this.vertices.IndexOf(nextVertex);
-        }
-
-        if (this.vertices[currentVertex].IsTerminal == true)
-        {
-            currentVertex = 0;
-            for (int i = 0; i < element?.Length; i++)
-            {
-                Vertex? nextVertex;
-                if (!this.vertices[currentVertex].Next.TryGetValue(element[i], out nextVertex))
-                {
-                    nextVertex = new ();
-                    this.vertices.Add(nextVertex);
-                    this.vertices[currentVertex].Next.Add(element[i], nextVertex);
-                }
-
-                nextVertex.TimesVisited--;
-
-                currentVertex = this.vertices.IndexOf(nextVertex);
-            }
-
-            return false;
         }
 
         this.Size++;
@@ -115,11 +89,6 @@ public class Trie
         (Vertex endOfTheMaxPrefix, int endOfTheMaxPrefixPosition) = (this.vertices[0], 0);
         for (int i = 0; i < element.Length; i++)
         {
-            if (CheckInputStringsChar(element, i))
-            {
-                return false;
-            }
-
             Vertex? nextVertex;
             Dictionary<char, Vertex> nextVertices = this.vertices[currentVertex].Next;
             if (!nextVertices.TryGetValue(element[i], out nextVertex))
@@ -161,11 +130,6 @@ public class Trie
         int currentVertex = 0;
         for (int i = 0; i < prefix?.Length; i++)
         {
-            if (CheckInputStringsChar(prefix, i))
-            {
-                return 0;
-            }
-
             Vertex? nextVertex;
             if (!this.vertices[currentVertex].Next.TryGetValue(prefix[i], out nextVertex))
             {
@@ -185,34 +149,9 @@ public class Trie
     /// <returns>A value indicating whether a string is invalid.</returns>
     private static bool CheckInputString(string? element)
     {
-        const int maxLength = 100;
         if (element == null || element.Length == 0)
         {
             Console.WriteLine("Please provide nonempty string.");
-            return true;
-        }
-
-        if (element.Length > maxLength)
-        {
-            Console.WriteLine($"Please provide string shorter than {maxLength} letters.");
-            return true;
-        }
-
-        return false;
-    }
-
-    /// <summary>
-    /// Checks for cases of invalid character.
-    /// </summary>
-    /// <param name="element"> Input string. </param>
-    /// <param name="i"> Char position. </param>
-    /// <returns>A value indicating whether a string is invalid.</returns>
-    private static bool CheckInputStringsChar(string element, int i)
-    {
-        const int alphabetLength = 256;
-        if (element[i] > alphabetLength)
-        {
-            Console.WriteLine("Please provide words composed of the permissible alphabet.");
             return true;
         }
 
@@ -227,7 +166,7 @@ public class Trie
         /// <summary>
         /// Gets or sets next vertex for the given character character.
         /// </summary>
-        public Dictionary<char, Vertex> Next { get; set; } = new (256);
+        public Dictionary<char, Vertex> Next { get; set; } = new ();
 
         /// <summary>
         /// Gets or sets a value indicating whether the vertex is the end of the word.
