@@ -36,24 +36,24 @@ public abstract class Operator : Node
         switch (operationChar)
         {
             case "*":
-            {
-                return new Multiplication();
-            }
+                {
+                    return new Multiplication();
+                }
 
             case "/":
-            {
-                return new Division();
-            }
+                {
+                    return new Division();
+                }
 
             case "-":
-            {
-                return new Substraction();
-            }
+                {
+                    return new Substraction();
+                }
 
             case "+":
-            {
-                return new Addition();
-            }
+                {
+                    return new Addition();
+                }
         }
 
         throw new IncorrectOperationCharException("Operation char is incorrect");
@@ -85,29 +85,21 @@ public abstract class Operator : Node
 /// <summary>
 /// Throws if operation char is invalid.
 /// </summary>
-public class IncorrectOperationCharException : Exception
+/// <remarks>
+/// Initializes a new instance of the <see cref="IncorrectOperationCharException"/> class.
+/// </remarks>
+/// <param name="message">Message.</param>
+public class IncorrectOperationCharException(string message) : Exception(message)
 {
-    /// <summary>
-    /// Initializes a new instance of the <see cref="IncorrectOperationCharException"/> class.
-    /// </summary>
-    /// <param name="message">Message.</param>
-    public IncorrectOperationCharException(string message)
-        : base(message)
-        {
-        }
 }
 
 /// <summary>
 /// Throws if program tries to compute operation without operands.
 /// </summary>
-public class MeaninglessExpressionException : Exception
+/// <remarks>
+/// Initializes a new instance of the <see cref="MeaninglessExpressionException"/> class.
+/// </remarks>
+/// <param name="message">Message.</param>
+public class MeaninglessExpressionException(string message) : Exception(message)
 {
-    /// <summary>
-    /// Initializes a new instance of the <see cref="MeaninglessExpressionException"/> class.
-    /// </summary>
-    /// <param name="message">Message.</param>
-    public MeaninglessExpressionException(string message)
-        : base(message)
-        {
-        }
 }

@@ -2,17 +2,25 @@
 // Copyright (c) Chernoshchokaya Evgenia. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
-if (args.Length == 0)
+
+using ParseTree;
+
+if (args.Length == 0 || args.Length > 1 || !File.Exists(args[0]))
 {
-    Console.WriteLine("Provide file with text of the following form: {operand1}{operator}{operand2}");
+    Console.WriteLine("Please provide file in which each string has such form: ({operator} {operand1} {operand2})");
+    return;
 }
-else
+
+string[] inputs = File.ReadAllLines(args[0]);
+for (int i = 0; i < inputs.Length; i++)
 {
-    string[] inputs = File.ReadAllLines(args[0]);
-    for (int i = 0; i < inputs.Length; i++)
+    if (inputs[i] == string.Empty)
     {
-        ParseTree.ParseTree parseTree = new ParseTree.ParseTree(inputs[i]);
-        ParseTree.Node root = parseTree.Root;
-        Console.WriteLine(ParseTree.Operator.Print(root), root.Evaluate());
+        continue;
     }
+
+    ParseTree.ParseTree parseTree = new ParseTree.ParseTree(inputs[i]);
+    ParseTree.Node root = parseTree.Root;
+    Node.Print(root);
+    Console.WriteLine($"{root.Evaluate()}");
 }

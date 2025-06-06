@@ -17,19 +17,17 @@ public abstract class Node
     /// <returns>Text that output contains.</returns>
     public static string Print(Node root)
     {
-        string stringToPrint = "( ";
+        var stringToPrint = string.Empty;
 
         // case for tree containing one number.
         if (root is Number)
         {
             // For number evaluate method returns number.
-            stringToPrint += root.Evaluate() + " ) ";
+            stringToPrint += "( " + root.Evaluate() + " ) ";
         }
         else
         {
-            Operator operatorRoot = (Operator)root;
-            stringToPrint += operatorRoot.OperationChar + " ";
-            PrintRecursively(operatorRoot, ref stringToPrint);
+            CallPrintRecursively(root, ref stringToPrint);
         }
 
         Console.WriteLine(stringToPrint);
@@ -59,9 +57,7 @@ public abstract class Node
         Node operand1 = root.Left;
         if (operand1 is Operator)
         {
-            Operator operatorOperand1 = (Operator)operand1;
-            stringToPrint += "( " + operatorOperand1.OperationChar + " ";
-            PrintRecursively(operatorOperand1, ref stringToPrint);
+            CallPrintRecursively(operand1, ref stringToPrint);
         }
         else
         {
@@ -71,9 +67,7 @@ public abstract class Node
         Node operand2 = root.Right;
         if (operand2 is Operator)
         {
-            Operator operatorOperand2 = (Operator)operand2;
-            stringToPrint += "( " + operatorOperand2.OperationChar + " ";
-            PrintRecursively(operatorOperand2, ref stringToPrint);
+            CallPrintRecursively(operand2, ref stringToPrint);
         }
         else
         {
@@ -82,5 +76,12 @@ public abstract class Node
 
         // After every second operand add closing brace.
         stringToPrint += ") ";
+    }
+
+    private static void CallPrintRecursively(Node @operator, ref string stringToPrint)
+    {
+        var operator_ = (Operator)@operator;
+        stringToPrint += "( " + operator_.OperationChar + " ";
+        PrintRecursively(operator_, ref stringToPrint);
     }
 }

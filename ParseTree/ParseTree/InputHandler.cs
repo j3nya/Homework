@@ -25,7 +25,7 @@ public class InputHandler
         int charPosition = 1;
         if (!IsOperator(input[charPosition]))
         {
-            string number = string.Empty;
+            var number = string.Empty;
             for (; input[charPosition] != ')'; charPosition++)
             {
                 number += input[charPosition];
@@ -77,7 +77,7 @@ public class InputHandler
             throw new IncorrectInputException("Please provide file in which each string has such form: ({operator} {operand1} {operand2})");
         }
 
-        string[] result = new string[3];
+        var result = new string[3];
 
         // Starting at second char skipping opening brace.
         int charPosition = 1;
@@ -134,8 +134,7 @@ public class InputHandler
         {
             result[2] += input[charPosition];
             charPosition++;
-            int braceCount = 1;
-            for (; braceCount != 0; charPosition++)
+            for (int braceCount = 1; braceCount != 0; charPosition++)
             {
                 if (input[charPosition] == '(')
                 {
@@ -232,14 +231,10 @@ public class InputHandler
 /// <summary>
 /// Throws if input is invalid.
 /// </summary>
-public class IncorrectInputException : Exception
+/// <remarks>
+/// Initializes a new instance of the <see cref="IncorrectInputException"/> class.
+/// </remarks>
+/// <param name="message">Message.</param>
+public class IncorrectInputException(string message) : Exception(message)
 {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="IncorrectInputException"/> class.
-        /// </summary>
-        /// <param name="message">Message.</param>
-    public IncorrectInputException(string message)
-    : base(message)
-    {
-    }
 }
