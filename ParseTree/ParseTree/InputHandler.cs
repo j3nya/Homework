@@ -74,7 +74,7 @@ public class InputHandler
     {
         if (!CheckInput(input))
         {
-            throw new IncorrectInputException("Please provide file in which each string has such form: ({operator} {operand1} {operand2})");
+            throw new IncorrectInputException();
         }
 
         var result = new string[3];
@@ -226,15 +226,4 @@ public class InputHandler
 
     private static bool IsOperator(char c) =>
         c == '/' || c == '*' || c == '-' || c == '+';
-}
-
-/// <summary>
-/// Throws if input is invalid.
-/// </summary>
-/// <remarks>
-/// Initializes a new instance of the <see cref="IncorrectInputException"/> class.
-/// </remarks>
-/// <param name="message">Message.</param>
-public class IncorrectInputException(string message) : Exception(message)
-{
 }

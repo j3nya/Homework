@@ -7,8 +7,7 @@ using ParseTree;
 
 if (args.Length == 0 || args.Length > 1 || !File.Exists(args[0]))
 {
-    Console.WriteLine("Please provide file in which each string has such form: ({operator} {operand1} {operand2})");
-    return;
+    throw new IncorrectInputException();
 }
 
 string[] inputs = File.ReadAllLines(args[0]);
@@ -19,7 +18,7 @@ for (int i = 0; i < inputs.Length; i++)
         continue;
     }
 
-    ParseTree.ParseTree parseTree = new ParseTree.ParseTree(inputs[i]);
+    ParseTree.ParseTree parseTree = new(inputs[i]);
     ParseTree.Node root = parseTree.Root;
     Node.Print(root);
     Console.WriteLine($"{root.Evaluate()}");

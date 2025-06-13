@@ -1,4 +1,0 @@
-root = true
-
-[*.cs]
-dotnet_diagnostic.SA1402.severity = none

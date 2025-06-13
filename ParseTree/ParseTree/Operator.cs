@@ -31,33 +31,14 @@ public abstract class Operator : Node
     /// <param name="operationChar">Operation's char in string type.</param>
     /// <returns>Operator corresponding to provided character.</returns>
     /// <exception cref="Exception">Throws if string is neither of provided operations' representasion.</exception>
-    public static Operator GetOperator(string operationChar)
+    public static Operator GetOperator(string operationChar) => operationChar switch
     {
-        switch (operationChar)
-        {
-            case "*":
-                {
-                    return new Multiplication();
-                }
-
-            case "/":
-                {
-                    return new Division();
-                }
-
-            case "-":
-                {
-                    return new Substraction();
-                }
-
-            case "+":
-                {
-                    return new Addition();
-                }
-        }
-
-        throw new IncorrectOperationCharException("Operation char is incorrect");
-    }
+        "*" => new Multiplication(),
+        "/" => new Division(),
+        "-" => new Subtraction(),
+        "+" => new Addition(),
+        _ => throw new IncorrectOperationCharException(),
+    };
 
     /// <summary>
     /// Operation rule.
@@ -80,26 +61,4 @@ public abstract class Operator : Node
 
         return this.Operate(this.Left.Evaluate(), this.Right.Evaluate());
     }
-}
-
-/// <summary>
-/// Throws if operation char is invalid.
-/// </summary>
-/// <remarks>
-/// Initializes a new instance of the <see cref="IncorrectOperationCharException"/> class.
-/// </remarks>
-/// <param name="message">Message.</param>
-public class IncorrectOperationCharException(string message) : Exception(message)
-{
-}
-
-/// <summary>
-/// Throws if program tries to compute operation without operands.
-/// </summary>
-/// <remarks>
-/// Initializes a new instance of the <see cref="MeaninglessExpressionException"/> class.
-/// </remarks>
-/// <param name="message">Message.</param>
-public class MeaninglessExpressionException(string message) : Exception(message)
-{
 }

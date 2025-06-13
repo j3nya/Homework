@@ -23,7 +23,8 @@ public class Division : Operator
     /// <returns>Division.</returns>
     public override float Operate(float a, float b)
     {
-        if (b != 0)
+        int intB = (int)b;
+        if (intB != 0)
         {
             return a / b;
         }

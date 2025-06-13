@@ -13,7 +13,7 @@ public class Addition : Operator
     /// <summary>
     /// Gets a character representing adding operation.
     /// </summary>
-    public override char OperationChar { get; } = '+';
+    public override char OperationChar => '+';
 
     /// <summary>
     /// Adds two numbers.
@@ -22,7 +22,5 @@ public class Addition : Operator
     /// <param name="b">Operand 2.</param>
     /// <returns>Sum.</returns>
     public override float Operate(float a, float b)
-    {
-        return a + b;
-    }
+        => a + b;
 }
